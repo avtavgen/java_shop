@@ -1,8 +1,14 @@
 package com.coffee.store.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@XmlRootElement
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 3678107792576131001L;
@@ -17,6 +23,7 @@ public class Product implements Serializable {
     private long unitsInOrder;
     private boolean discontinued;
     private String condition;
+    @JsonIgnore private MultipartFile productImage;
 
     public Product() {
         super();
@@ -26,6 +33,15 @@ public class Product implements Serializable {
         this.productId = productId;
         this.name = name;
         this.unitPrice = unitPrice;
+    }
+
+    @XmlTransient
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
     }
 
     public String getProductId() {
