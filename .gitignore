@@ -7,6 +7,7 @@ target
 src/main/webapp/META-INF
 .idea
 .gradle
+gradle
 build
 out
 *.iml

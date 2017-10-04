@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -25,5 +27,30 @@ public class ProductServiceImpl implements ProductService {
             if(product.getUnitsInStock()<500)
                 productRepository.updateStock(product.getProductId(),product.getUnitsInStock() + 1000);
         }
+    }
+
+    @Override
+    public List<Product> getProductsByCategory(String category) {
+        return productRepository.getProductsByCategory(category);
+    }
+
+    @Override
+    public List<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
+        return productRepository.getProductsByFilter(filterParams);
+    }
+
+    @Override
+    public Product getProductById(String productID) {
+        return productRepository.getProductById(productID);
+    }
+
+    @Override
+    public List<Product> filterProducts(String category, Map<String, List<String>> filterParams, String brand) {
+        return productRepository.filterProducts(category, filterParams, brand);
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        productRepository.addProduct(product);
     }
 }
