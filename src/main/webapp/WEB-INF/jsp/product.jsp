@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="/resources/js/controllers.js"></script>
     <title>Product</title>
 </head>
 <body>
@@ -16,7 +18,7 @@
         </div>
     </div>
 </section>
-<section class="container">
+<section class="container" ng-app="cartApp">
     <div class="row">
         <div class="col-md-5">
             <img src="<c:url value="/img/${product.productId}.png"></c:url>" alt="image" style = "width:100%"/>
@@ -36,13 +38,19 @@
             <p>
                 <strong>Availble units in stock </strong> :${product.unitsInStock}
             </p>
-            <h4>${product.unitPrice} USD</h4>
+            <h4>${product.unitPrice} EUR</h4>
             <a href="<spring:url value="/market/products" />" class="btn btn-default">
                 <span class="glyphicon-hand-left glyphicon"></span> back
             </a>
-            <p>
-                <a href="#" class="btn btn-warning btn-large"><span class="glyphicon-shopping-cart glyphicon"></span>Order Now</a>
+            <br>
+            <p ng-controller="cartCtrl">
+                <a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${product.productId}')">
+                    <span class="glyphicon-shopping-cart glyphicon"></span> Order Now
+                </a>
             </p>
+            <a href="<spring:url value="/cart" />" class="btn btn-default">
+                <span class="glyphicon-hand-right glyphicon"></span> View Cart
+            </a>
         </div>
     </div>
 </section>
