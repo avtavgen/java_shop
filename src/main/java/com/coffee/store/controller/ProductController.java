@@ -4,6 +4,8 @@ import com.coffee.store.domain.Product;
 import com.coffee.store.exception.NoProductsFoundUnderCategoryException;
 import com.coffee.store.exception.ProductNotFoundException;
 import com.coffee.store.service.ProductService;
+import com.coffee.store.validator.ProductValidator;
+import com.coffee.store.validator.UnitsInStockValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +28,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductValidator productValidator;
 
     @RequestMapping("/products")
     public String list(Model model) {
@@ -80,7 +86,10 @@ public class ProductController {
     }
 
     @RequestMapping(value="/products/add", method=RequestMethod.POST)
-    public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, BindingResult result, HttpServletRequest request) {
+    public String processAddNewProductForm(@ModelAttribute("newProduct") @Valid Product newProduct, BindingResult result, HttpServletRequest request) {
+        if(result.hasErrors()) {
+            return "addProduct";
+        }
         String[] suppressedFields = result.getSuppressedFields();
         if (suppressedFields.length > 0) {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -100,6 +109,7 @@ public class ProductController {
 
     @InitBinder
     public void initialiseBinder(WebDataBinder binder) {
+        binder.setValidator(productValidator);
         binder.setAllowedFields("productId",
                 "name",
                 "unitPrice",
@@ -108,7 +118,8 @@ public class ProductController {
                 "category",
                 "unitsInStock",
                 "condition",
-                "productImage");
+                "productImage",
+                "language");
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
@@ -119,5 +130,10 @@ public class ProductController {
         mav.addObject("url",req.getRequestURL()+"?"+req.getQueryString());
         mav.setViewName("productNotFound");
         return mav;
+    }
+
+    @RequestMapping("/products/invalidPromoCode")
+    public String invalidPromoCode() {
+        return "invalidPromoCode";
     }
 }

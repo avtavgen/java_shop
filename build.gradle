@@ -16,7 +16,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 
 group = 'com.coffee'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = 1.8
 
 repositories {
@@ -40,6 +40,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-oxm', version: '5.0.0.RELEASE'
     compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.9'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.3.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.3.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.1.Final'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -18,8 +18,15 @@
             </div>
         </div>
     </section>
+    <section>
+        <div class="pull-right" style="padding-right:50px">
+            <a href="?language=en" >English</a> | <a href="?language=de">German</a><br>
+            <a href="<c:url value="/logout" />">Logout</a>
+        </div>
+    </section>
     <section class="container">
         <form:form method="POST" modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
+            <form:errors path="*" cssClass="alert alert-danger" element="div"/>
         <fieldset>
             <legend>Add new product</legend>
             <div class="form-group">
@@ -27,6 +34,7 @@
                     <spring:message code="addProduct.form.productId.label"/></label>
                 <div class="col-lg-10">
                     <form:input id="productId" path="productId" type="text" class="form:input-large"/>
+                    <form:errors path="productId" cssClass="text-danger"/>
                 </div>
             </div>
             <div class="form-group">
