@@ -26,8 +26,7 @@
                     <div class="caption">
                         <h3>${product.name}</h3>
                         <p>${product.description}</p>
-                        <p>$${product.unitPrice}</p>
-                        <p>Available ${product.unitsInStock} units in stock</p>
+                        <p>&euro; ${product.unitPrice}</p>
                         <p>
                             <a href=" <spring:url value="/market/product?id=${product.productId}" /> " class="btn btn-primary">
                                 <span class="glyphicon-info-sign glyphicon"/></span> Details

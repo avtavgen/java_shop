@@ -13,9 +13,9 @@ public class InMemoryCustomerRepository implements CustomerRepository {
     @Override
     public List<Customer> getAllCustomers() {
         List<Customer> customerList = new ArrayList<>();
-        customerList.add(new Customer("ID1", "Mike", "NY"));
-        customerList.add(new Customer("ID2", "Stan", "LA"));
-        customerList.add(new Customer("ID3", "Bob", "VC"));
+//        customerList.add(new Customer("ID1", "Mike", "NY"));
+//        customerList.add(new Customer("ID2", "Stan", "LA"));
+//        customerList.add(new Customer("ID3", "Bob", "VC"));
         return customerList;
     }
 }

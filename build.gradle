@@ -44,6 +44,7 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.3.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.3.RELEASE'
     compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.1.Final'
+    compile group: 'org.springframework.webflow', name: 'spring-webflow', version: '2.4.2.RELEASE'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

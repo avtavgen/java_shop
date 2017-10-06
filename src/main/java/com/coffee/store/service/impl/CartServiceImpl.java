@@ -3,6 +3,7 @@ package com.coffee.store.service.impl;
 import com.coffee.store.domain.Cart;
 import com.coffee.store.domain.repository.CartRepository;
 import com.coffee.store.dto.CartDto;
+import com.coffee.store.exception.InvalidCartException;
 import com.coffee.store.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,21 @@ public class CartServiceImpl implements CartService {
     @Override
     public void removeItem(String cartId, String productId) {
         cartRepository.removeItem(cartId, productId);
+    }
+
+    @Override
+    public Cart validate(String cartId) {
+        Cart cart = cartRepository.read(cartId);
+
+        if(cart == null || cart.getCartItems().size() == 0) {
+            throw new InvalidCartException(cartId);
+        }
+
+        return cart;
+    }
+
+    @Override
+    public void clearCart(String cartId) {
+        cartRepository.clearCart(cartId);
     }
 }

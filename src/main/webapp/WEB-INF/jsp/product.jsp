@@ -35,9 +35,6 @@
             <p>
                 <strong>category</strong> :${product.category}
             </p>
-            <p>
-                <strong>Availble units in stock </strong> :${product.unitsInStock}
-            </p>
             <h4>${product.unitPrice} EUR</h4>
             <a href="<spring:url value="/market/products" />" class="btn btn-default">
                 <span class="glyphicon-hand-left glyphicon"></span> back

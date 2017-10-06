@@ -1,10 +1,11 @@
 package com.coffee.store.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.Function;
 
-public class Cart {
+public class Cart implements Serializable {
     private static final long serialVersionUID = 6554623865768217431L;
 
     private String id;
