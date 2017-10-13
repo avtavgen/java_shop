@@ -1,0 +1,1 @@
+<p>&copy; Best Coffee Shop 2017</p>

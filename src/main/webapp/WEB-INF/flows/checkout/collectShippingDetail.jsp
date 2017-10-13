@@ -1,21 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <title>Customer</title>
-</head>
-<body>
-<section>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Shipping</h1>
-            <p>Shipping details</p>
-        </div>
-    </div>
-</section>
 <section class="container">
     <form:form modelAttribute="order.shippingDetail" class="form-horizontal">
         <fieldset>
@@ -79,5 +64,3 @@
         </fieldset>
     </form:form>
 </section>
-</body>
-</html>

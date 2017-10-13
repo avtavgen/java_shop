@@ -1,29 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <title>Products</title>
-</head>
-<body>
-    <section>
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Products</h1>
-                <p>Add products</p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="pull-right" style="padding-right:50px">
-            <a href="?language=en" >English</a> | <a href="?language=de">German</a><br>
-            <a href="<c:url value="/logout" />">Logout</a>
-        </div>
-    </section>
     <section class="container">
         <form:form method="POST" modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
             <form:errors path="*" cssClass="alert alert-danger" element="div"/>
@@ -112,5 +89,3 @@
         </fieldset>
         </form:form>
     </section>
-</body>
-</html>
